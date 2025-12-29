@@ -15,11 +15,24 @@ const port = process.env.PORT || 5000;
 
 const app = express();
 
+const allowedOrigins = [
+  "https://mern-task-manager-app.netlify.app",
+  "http://localhost:3000",
+  "http://localhost:3001",
+  "https://task-manager-1-ckqz.onrender.com",
+];
+
 app.use(
   cors({
-    origin: ["https://mern-task-manager-app.netlify.app", "http://localhost:3000", "http://localhost:3001"],
-    methods: ["GET", "POST", "DELETE", "PUT"],
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true); // allow non-browser tools
+      return allowedOrigins.indexOf(origin) !== -1
+        ? callback(null, true)
+        : callback(new Error("Not allowed by CORS"));
+    },
+    methods: ["GET", "POST", "DELETE", "PUT", "OPTIONS"],
     credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
   })
 );
 
