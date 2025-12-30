@@ -16,7 +16,7 @@ const port = process.env.PORT || 5000;
 const app = express();
 
 const allowedOrigins = [
-  "https://mern-task-manager-app.netlify.app",
+  "https://taskmanagercloud.netlify.app",
   "http://localhost:3000",
   "http://localhost:3001",
   "https://task-manager-1-ckqz.onrender.com",
