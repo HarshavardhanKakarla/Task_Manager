@@ -18,6 +18,7 @@ const configuredOrigins = (process.env.FRONTEND_URL || "")
   .filter(Boolean);
 const allowedOrigins = [
   "https://taskmef.netlify.app",
+  "https://taskme-seven.vercel.app",
   "http://localhost:3000",
   ...configuredOrigins,
 ];
