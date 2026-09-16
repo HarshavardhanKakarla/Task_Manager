@@ -13,6 +13,12 @@ const protectRoute = asyncHandler(async (req, res, next) => {
         "isAdmin email"
       );
 
+      if (!resp) {
+        return res
+          .status(401)
+          .json({ status: false, message: "User no longer exists. Log in again." });
+      }
+
       req.user = {
         email: resp.email,
         isAdmin: resp.isAdmin,
