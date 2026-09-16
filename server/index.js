@@ -12,12 +12,16 @@ dotenv.config();
 dbConnection();
 
 const port = process.env.PORT || 5000;
+const allowedOrigins = (process.env.FRONTEND_URL || "http://localhost:3000")
+  .split(",")
+  .map((origin) => origin.trim())
+  .filter(Boolean);
 
 const app = express();
 
 app.use(
   cors({
-    origin: ["https://mern-task-manager-app.netlify.app", "http://localhost:3000", "http://localhost:3001"],
+    origin: allowedOrigins,
     methods: ["GET", "POST", "DELETE", "PUT"],
     credentials: true,
   })
