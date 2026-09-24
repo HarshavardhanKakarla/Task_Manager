@@ -26,13 +26,15 @@ export function dateFormatter(dateString) {
 }
 
 export function getInitials(fullName) {
-  const names = fullName.split(" ");
+  const names = String(fullName || "User")
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean);
 
-  const initials = names.slice(0, 2).map((name) => name[0].toUpperCase());
-
-  const initialsStr = initials.join("");
-
-  return initialsStr;
+  return names
+    .slice(0, 2)
+    .map((name) => name.charAt(0).toUpperCase())
+    .join("");
 }
 
 export const updateURL = ({ searchTerm, navigate, location }) => {
