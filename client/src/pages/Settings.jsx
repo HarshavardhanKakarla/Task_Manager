@@ -101,7 +101,7 @@ const Settings = () => {
                 Theme
               </p>
               <p className='text-sm text-gray-500 dark:text-gray-400'>
-                Choose the appearance for TaskMe.
+                Choose the appearance for TeamTrack.
               </p>
             </div>
             <ThemeToggle />
